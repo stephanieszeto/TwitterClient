@@ -10,6 +10,7 @@
 #import "SSComposeViewController.h"
 #import "SSTweetViewController.h"
 #import "SSTweetCell.h"
+#import "SSRetweetCell.h"
 #import "SSTweet.h"
 
 @interface SSTimelineViewController ()
@@ -46,12 +47,23 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    // set navigation bar colors
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.42 green:0.69 blue:0.95 alpha:1.0];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
     // add new button to navigation bar
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(onNewButton)];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     
     // register tweet cell
     UINib *tweetNib = [UINib nibWithNibName:@"SSTweetCell" bundle:nil];
     [self.tableView registerNib:tweetNib forCellReuseIdentifier:@"SSTweetCell"];
+    
+    // register retweet cell
+    UINib *retweetNib = [UINib nibWithNibName:@"SSRetweetCell" bundle:nil];
+    [self.tableView registerNib:retweetNib forCellReuseIdentifier:@"SSRetweetCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,7 +82,12 @@
 # pragma mark - Table view methods
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
+    SSTweet *tweet = self.tweets[indexPath.row];
+    if (!tweet.retweeter) {
+        return 120;
+    } else {
+        return 150;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -84,8 +101,9 @@
         [tweetCell setValues:tweet];
         return tweetCell;
     } else {
-        UITableViewCell *cell = [[UITableViewCell alloc] init];
-        return cell;
+        SSRetweetCell *retweetCell = [self.tableView dequeueReusableCellWithIdentifier:@"SSRetweetCell" forIndexPath:indexPath];
+        [retweetCell setValues:tweet];
+        return retweetCell;
     }
 }
 

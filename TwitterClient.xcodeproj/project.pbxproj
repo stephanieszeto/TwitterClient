@@ -17,6 +17,8 @@
 		90039C0E18E7CB15001A7897 /* SSTweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90039C0C18E7CB15001A7897 /* SSTweetCell.xib */; };
 		9083A6DA18E7EB390058E8D6 /* SSTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9083A6D818E7EB390058E8D6 /* SSTweetViewController.m */; };
 		9083A6DB18E7EB390058E8D6 /* SSTweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9083A6D918E7EB390058E8D6 /* SSTweetViewController.xib */; };
+		9083A6DF18E815130058E8D6 /* SSRetweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9083A6DD18E815130058E8D6 /* SSRetweetCell.m */; };
+		9083A6E018E815130058E8D6 /* SSRetweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9083A6DE18E815130058E8D6 /* SSRetweetCell.xib */; };
 		90D9B27B18E67F28004A6789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D9B27A18E67F28004A6789 /* Foundation.framework */; };
 		90D9B27D18E67F28004A6789 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D9B27C18E67F28004A6789 /* CoreGraphics.framework */; };
 		90D9B27F18E67F28004A6789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D9B27E18E67F28004A6789 /* UIKit.framework */; };
@@ -63,6 +65,9 @@
 		9083A6D718E7EB390058E8D6 /* SSTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSTweetViewController.h; path = "View Controllers/SSTweetViewController.h"; sourceTree = "<group>"; };
 		9083A6D818E7EB390058E8D6 /* SSTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSTweetViewController.m; path = "View Controllers/SSTweetViewController.m"; sourceTree = "<group>"; };
 		9083A6D918E7EB390058E8D6 /* SSTweetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSTweetViewController.xib; path = "View Controllers/SSTweetViewController.xib"; sourceTree = "<group>"; };
+		9083A6DC18E815130058E8D6 /* SSRetweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSRetweetCell.h; path = Views/SSRetweetCell.h; sourceTree = "<group>"; };
+		9083A6DD18E815130058E8D6 /* SSRetweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSRetweetCell.m; path = Views/SSRetweetCell.m; sourceTree = "<group>"; };
+		9083A6DE18E815130058E8D6 /* SSRetweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSRetweetCell.xib; path = Views/SSRetweetCell.xib; sourceTree = "<group>"; };
 		90D9B27718E67F28004A6789 /* TwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D9B27A18E67F28004A6789 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		90D9B27C18E67F28004A6789 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,6 +141,9 @@
 				90039C0A18E7CB15001A7897 /* SSTweetCell.h */,
 				90039C0B18E7CB15001A7897 /* SSTweetCell.m */,
 				90039C0C18E7CB15001A7897 /* SSTweetCell.xib */,
+				9083A6DC18E815130058E8D6 /* SSRetweetCell.h */,
+				9083A6DD18E815130058E8D6 /* SSRetweetCell.m */,
+				9083A6DE18E815130058E8D6 /* SSRetweetCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -306,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9083A6E018E815130058E8D6 /* SSRetweetCell.xib in Resources */,
 				90D9B28518E67F28004A6789 /* InfoPlist.strings in Resources */,
 				9083A6DB18E7EB390058E8D6 /* SSTweetViewController.xib in Resources */,
 				90039C0418E7C074001A7897 /* SSTimelineViewController.xib in Resources */,
@@ -366,6 +375,7 @@
 			files = (
 				90039C0D18E7CB15001A7897 /* SSTweetCell.m in Sources */,
 				90D9B2B218E69123004A6789 /* SSLoginViewController.m in Sources */,
+				9083A6DF18E815130058E8D6 /* SSRetweetCell.m in Sources */,
 				90D9B28B18E67F28004A6789 /* AppDelegate.m in Sources */,
 				90039BFC18E7AE1F001A7897 /* SSTweet.m in Sources */,
 				90D9B2AE18E68B82004A6789 /* TwitterClient.m in Sources */,

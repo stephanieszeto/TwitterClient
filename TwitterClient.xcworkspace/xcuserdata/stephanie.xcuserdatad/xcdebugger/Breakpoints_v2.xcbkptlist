@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TwitterClient/View Controllers/SSTimelineViewController.m"
-            timestampString = "417852894.530638"
+            timestampString = "417865682.081108"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>

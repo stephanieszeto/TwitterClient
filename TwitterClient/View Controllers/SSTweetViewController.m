@@ -7,6 +7,7 @@
 //
 
 #import "SSTweetViewController.h"
+#import "SSComposeViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "SSTweet.h"
 
@@ -50,6 +51,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // set navigation bar colors
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.42 green:0.69 blue:0.95 alpha:1.0];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    // add new button to navigation bar
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStyleBordered target:self action:@selector(onReplyButton)];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+    
     [self setValues:self.tweet];
 }
 
@@ -59,13 +71,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+# pragma mark - Navigation bar methods
+
+- (void)onReplyButton {
+    SSComposeViewController *cvc = [[SSComposeViewController alloc] init];
+    [self.navigationController pushViewController:cvc animated:YES];
+}
+
+# pragma mark - private methods
+
 - (void)setValues:(SSTweet *)tweet {
     self.name.text = tweet.user.name;
     self.username.text = [NSString stringWithFormat:@"@%@", tweet.user.username];
     self.numFavorites.text = [@(tweet.numFavorites) stringValue];
     self.numRetweets.text = [@(tweet.numRetweets) stringValue];
-    [self.avatar setImageWithURL:tweet.user.avatarURL];
     
+    [self.avatar setImageWithURL:tweet.user.avatarURL];
+    self.replyButton.image = [UIImage imageNamed:@"defaultReply"];
+    self.bottomRetweetButton.image = [UIImage imageNamed:@"defaultRetweet"];
+    self.favoriteButton.image = [UIImage imageNamed:@"defaultFavorite"];
+    
+    // set tweet text
     self.tweetText.text = tweet.tweet;
     self.tweetText.numberOfLines = 0;
     self.tweetText.lineBreakMode = NSLineBreakByWordWrapping;
@@ -74,13 +100,20 @@
     self.tweetText.frame = frame;
     [self.tweetText sizeToFit];
     
-    // compute time
-    self.time.text = tweet.time;
+    // set time
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [df setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];
+    NSDate *date = [df dateFromString:tweet.time];
+    NSString *time = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+    self.time.text = time;
+    
     if (!tweet.retweeter) {
         [self.topRetweetButton setHidden:YES];
         [self.retweeterLabel setHidden:YES];
     } else {
-        self.retweeterLabel.text = [NSString stringWithFormat:@"%@ retweeted", tweet.retweeter.username];
+        self.topRetweetButton.image = [UIImage imageNamed:@"defaultRetweet"];
+        self.retweeterLabel.text = [NSString stringWithFormat:@"%@ retweeted", tweet.retweeter.name];
     }
 }
 

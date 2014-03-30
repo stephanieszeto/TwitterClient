@@ -1,41 +1,44 @@
 //
-//  SSTweetCell.m
+//  SSRetweetCell.m
 //  TwitterClient
 //
-//  Created by Stephanie Szeto on 3/29/14.
+//  Created by Stephanie Szeto on 3/30/14.
 //  Copyright (c) 2014 projects. All rights reserved.
 //
 
-#import "SSTweetCell.h"
+#import "SSRetweetCell.h"
 #import "UIImageView+AFNetworking.h"
-#import "SSUser.h"
+#import "SSTweet.h"
 
-@interface SSTweetCell ()
+@interface SSRetweetCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet UIImageView *topRetweetButton;
+@property (weak, nonatomic) IBOutlet UILabel *retweeterLabel;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *username;
-@property (weak, nonatomic) IBOutlet UILabel *tweetText;
 @property (weak, nonatomic) IBOutlet UILabel *time;
+@property (weak, nonatomic) IBOutlet UILabel *tweetText;
 @property (weak, nonatomic) IBOutlet UIImageView *replyButton;
-@property (weak, nonatomic) IBOutlet UIImageView *retweetButton;
+@property (weak, nonatomic) IBOutlet UIImageView *bottomRetweetButton;
 @property (weak, nonatomic) IBOutlet UIImageView *favoriteButton;
 
 @end
 
-@implementation SSTweetCell
+@implementation SSRetweetCell
 
 - (void)setValues:(SSTweet *)tweet {
     self.tweet = tweet;
     self.name.text = tweet.user.name;
     self.username.text = [NSString stringWithFormat:@"@%@", tweet.user.username];
+    self.retweeterLabel.text = [NSString stringWithFormat:@"%@ retweeted", tweet.retweeter.name];
     
     [self.avatar setImageWithURL:tweet.user.avatarURL];
+    self.topRetweetButton.image = [UIImage imageNamed:@"defaultRetweet"];
     self.replyButton.image = [UIImage imageNamed:@"defaultReply"];
-    self.retweetButton.image = [UIImage imageNamed:@"defaultRetweet"];
+    self.bottomRetweetButton.image = [UIImage imageNamed:@"defaultRetweet"];
     self.favoriteButton.image = [UIImage imageNamed:@"defaultFavorite"];
     
-    // set tweet text
     self.tweetText.text = tweet.tweet;
     self.tweetText.numberOfLines = 0;
     self.tweetText.lineBreakMode = NSLineBreakByWordWrapping;
@@ -44,7 +47,7 @@
     self.tweetText.frame = frame;
     [self.tweetText sizeToFit];
     
-    // set time
+    // compute time
     self.time.text = [self findTime:tweet.time];
 }
 
