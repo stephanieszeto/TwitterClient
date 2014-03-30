@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90039BFC18E7AE1F001A7897 /* SSTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 90039BFB18E7AE1F001A7897 /* SSTweet.m */; };
+		90039BFF18E7B07A001A7897 /* SSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 90039BFE18E7B07A001A7897 /* SSUser.m */; };
+		90039C0318E7C074001A7897 /* SSTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90039C0118E7C074001A7897 /* SSTimelineViewController.m */; };
+		90039C0418E7C074001A7897 /* SSTimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90039C0218E7C074001A7897 /* SSTimelineViewController.xib */; };
+		90039C0818E7C8F7001A7897 /* SSComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90039C0618E7C8F7001A7897 /* SSComposeViewController.m */; };
+		90039C0918E7C8F7001A7897 /* SSComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90039C0718E7C8F7001A7897 /* SSComposeViewController.xib */; };
+		90039C0D18E7CB15001A7897 /* SSTweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90039C0B18E7CB15001A7897 /* SSTweetCell.m */; };
+		90039C0E18E7CB15001A7897 /* SSTweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90039C0C18E7CB15001A7897 /* SSTweetCell.xib */; };
+		9083A6DA18E7EB390058E8D6 /* SSTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9083A6D818E7EB390058E8D6 /* SSTweetViewController.m */; };
+		9083A6DB18E7EB390058E8D6 /* SSTweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9083A6D918E7EB390058E8D6 /* SSTweetViewController.xib */; };
 		90D9B27B18E67F28004A6789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D9B27A18E67F28004A6789 /* Foundation.framework */; };
 		90D9B27D18E67F28004A6789 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D9B27C18E67F28004A6789 /* CoreGraphics.framework */; };
 		90D9B27F18E67F28004A6789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D9B27E18E67F28004A6789 /* UIKit.framework */; };
@@ -37,6 +47,22 @@
 
 /* Begin PBXFileReference section */
 		284EE99580774BD187D5797C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		90039BFA18E7AE1F001A7897 /* SSTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSTweet.h; path = Models/SSTweet.h; sourceTree = "<group>"; };
+		90039BFB18E7AE1F001A7897 /* SSTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSTweet.m; path = Models/SSTweet.m; sourceTree = "<group>"; };
+		90039BFD18E7B07A001A7897 /* SSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSUser.h; path = Models/SSUser.h; sourceTree = "<group>"; };
+		90039BFE18E7B07A001A7897 /* SSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSUser.m; path = Models/SSUser.m; sourceTree = "<group>"; };
+		90039C0018E7C074001A7897 /* SSTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSTimelineViewController.h; path = "View Controllers/SSTimelineViewController.h"; sourceTree = "<group>"; };
+		90039C0118E7C074001A7897 /* SSTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSTimelineViewController.m; path = "View Controllers/SSTimelineViewController.m"; sourceTree = "<group>"; };
+		90039C0218E7C074001A7897 /* SSTimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSTimelineViewController.xib; path = "View Controllers/SSTimelineViewController.xib"; sourceTree = "<group>"; };
+		90039C0518E7C8F7001A7897 /* SSComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSComposeViewController.h; path = "View Controllers/SSComposeViewController.h"; sourceTree = "<group>"; };
+		90039C0618E7C8F7001A7897 /* SSComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSComposeViewController.m; path = "View Controllers/SSComposeViewController.m"; sourceTree = "<group>"; };
+		90039C0718E7C8F7001A7897 /* SSComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSComposeViewController.xib; path = "View Controllers/SSComposeViewController.xib"; sourceTree = "<group>"; };
+		90039C0A18E7CB15001A7897 /* SSTweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSTweetCell.h; path = Views/SSTweetCell.h; sourceTree = "<group>"; };
+		90039C0B18E7CB15001A7897 /* SSTweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSTweetCell.m; path = Views/SSTweetCell.m; sourceTree = "<group>"; };
+		90039C0C18E7CB15001A7897 /* SSTweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSTweetCell.xib; path = Views/SSTweetCell.xib; sourceTree = "<group>"; };
+		9083A6D718E7EB390058E8D6 /* SSTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSTweetViewController.h; path = "View Controllers/SSTweetViewController.h"; sourceTree = "<group>"; };
+		9083A6D818E7EB390058E8D6 /* SSTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSTweetViewController.m; path = "View Controllers/SSTweetViewController.m"; sourceTree = "<group>"; };
+		9083A6D918E7EB390058E8D6 /* SSTweetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSTweetViewController.xib; path = "View Controllers/SSTweetViewController.xib"; sourceTree = "<group>"; };
 		90D9B27718E67F28004A6789 /* TwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D9B27A18E67F28004A6789 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		90D9B27C18E67F28004A6789 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,11 +79,11 @@
 		90D9B29B18E67F28004A6789 /* TwitterClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TwitterClientTests-Info.plist"; sourceTree = "<group>"; };
 		90D9B29D18E67F28004A6789 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		90D9B29F18E67F28004A6789 /* TwitterClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterClientTests.m; sourceTree = "<group>"; };
-		90D9B2AC18E68B82004A6789 /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterClient.h; sourceTree = "<group>"; };
-		90D9B2AD18E68B82004A6789 /* TwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterClient.m; sourceTree = "<group>"; };
-		90D9B2AF18E69123004A6789 /* SSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLoginViewController.h; sourceTree = "<group>"; };
-		90D9B2B018E69123004A6789 /* SSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLoginViewController.m; sourceTree = "<group>"; };
-		90D9B2B118E69123004A6789 /* SSLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSLoginViewController.xib; sourceTree = "<group>"; };
+		90D9B2AC18E68B82004A6789 /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterClient.h; path = Vendors/TwitterClient.h; sourceTree = "<group>"; };
+		90D9B2AD18E68B82004A6789 /* TwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterClient.m; path = Vendors/TwitterClient.m; sourceTree = "<group>"; };
+		90D9B2AF18E69123004A6789 /* SSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSLoginViewController.h; path = "View Controllers/SSLoginViewController.h"; sourceTree = "<group>"; };
+		90D9B2B018E69123004A6789 /* SSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSLoginViewController.m; path = "View Controllers/SSLoginViewController.m"; sourceTree = "<group>"; };
+		90D9B2B118E69123004A6789 /* SSLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSLoginViewController.xib; path = "View Controllers/SSLoginViewController.xib"; sourceTree = "<group>"; };
 		D59223CA3AE643F288AD9177 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +112,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90039BF618E7AB77001A7897 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		90039BF918E7AC4E001A7897 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				90039BFA18E7AE1F001A7897 /* SSTweet.h */,
+				90039BFB18E7AE1F001A7897 /* SSTweet.m */,
+				90039BFD18E7B07A001A7897 /* SSUser.h */,
+				90039BFE18E7B07A001A7897 /* SSUser.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		90039C0F18E7CBB0001A7897 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				90039C0A18E7CB15001A7897 /* SSTweetCell.h */,
+				90039C0B18E7CB15001A7897 /* SSTweetCell.m */,
+				90039C0C18E7CB15001A7897 /* SSTweetCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		90D9B26E18E67F28004A6789 = {
 			isa = PBXGroup;
 			children = (
@@ -121,15 +175,27 @@
 		90D9B28018E67F28004A6789 /* TwitterClient */ = {
 			isa = PBXGroup;
 			children = (
+				90039BF918E7AC4E001A7897 /* Models */,
 				90D9B28918E67F28004A6789 /* AppDelegate.h */,
 				90D9B28A18E67F28004A6789 /* AppDelegate.m */,
 				90D9B2AC18E68B82004A6789 /* TwitterClient.h */,
 				90D9B2AD18E68B82004A6789 /* TwitterClient.m */,
 				90D9B28C18E67F28004A6789 /* Images.xcassets */,
 				90D9B28118E67F28004A6789 /* Supporting Files */,
+				90039BF618E7AB77001A7897 /* View Controllers */,
+				90039C0018E7C074001A7897 /* SSTimelineViewController.h */,
+				90039C0118E7C074001A7897 /* SSTimelineViewController.m */,
+				90039C0218E7C074001A7897 /* SSTimelineViewController.xib */,
+				9083A6D718E7EB390058E8D6 /* SSTweetViewController.h */,
+				9083A6D818E7EB390058E8D6 /* SSTweetViewController.m */,
+				9083A6D918E7EB390058E8D6 /* SSTweetViewController.xib */,
+				90039C0518E7C8F7001A7897 /* SSComposeViewController.h */,
+				90039C0618E7C8F7001A7897 /* SSComposeViewController.m */,
+				90039C0718E7C8F7001A7897 /* SSComposeViewController.xib */,
 				90D9B2AF18E69123004A6789 /* SSLoginViewController.h */,
 				90D9B2B018E69123004A6789 /* SSLoginViewController.m */,
 				90D9B2B118E69123004A6789 /* SSLoginViewController.xib */,
+				90039C0F18E7CBB0001A7897 /* Views */,
 			);
 			path = TwitterClient;
 			sourceTree = "<group>";
@@ -241,8 +307,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				90D9B28518E67F28004A6789 /* InfoPlist.strings in Resources */,
+				9083A6DB18E7EB390058E8D6 /* SSTweetViewController.xib in Resources */,
+				90039C0418E7C074001A7897 /* SSTimelineViewController.xib in Resources */,
 				90D9B28D18E67F28004A6789 /* Images.xcassets in Resources */,
+				90039C0918E7C8F7001A7897 /* SSComposeViewController.xib in Resources */,
 				90D9B2B318E69123004A6789 /* SSLoginViewController.xib in Resources */,
+				90039C0E18E7CB15001A7897 /* SSTweetCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,10 +364,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90039C0D18E7CB15001A7897 /* SSTweetCell.m in Sources */,
 				90D9B2B218E69123004A6789 /* SSLoginViewController.m in Sources */,
 				90D9B28B18E67F28004A6789 /* AppDelegate.m in Sources */,
+				90039BFC18E7AE1F001A7897 /* SSTweet.m in Sources */,
 				90D9B2AE18E68B82004A6789 /* TwitterClient.m in Sources */,
+				90039C0318E7C074001A7897 /* SSTimelineViewController.m in Sources */,
+				90039BFF18E7B07A001A7897 /* SSUser.m in Sources */,
 				90D9B28718E67F28004A6789 /* main.m in Sources */,
+				9083A6DA18E7EB390058E8D6 /* SSTweetViewController.m in Sources */,
+				90039C0818E7C8F7001A7897 /* SSComposeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

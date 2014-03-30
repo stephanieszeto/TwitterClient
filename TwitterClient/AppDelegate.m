@@ -8,7 +8,15 @@
 
 #import "AppDelegate.h"
 #import "SSLoginViewController.h"
+#import "SSTimelineViewController.h"
 #import "TwitterClient.h"
+#import "SSTweet.h"
+
+@interface AppDelegate ()
+
+@property (nonatomic, strong) UINavigationController *nvc;
+
+@end
 
 @implementation NSURL (dictionaryFromQueryString)
 
@@ -36,7 +44,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    self.window.rootViewController = [[SSLoginViewController alloc] init];
+    SSLoginViewController *lvc = [[SSLoginViewController alloc] init];
+    self.nvc = [[UINavigationController alloc] initWithRootViewController:lvc];;
+    self.window.rootViewController = self.nvc;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -57,10 +67,24 @@
                     
                     // make API calls
                     [client timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        NSLog(@"timeline response: %@", responseObject);
+                        //NSLog(@"timeline response: %@", responseObject);
+                        
+                        // populate models
+                        NSArray *tweetsInJson = responseObject;
+                        NSMutableArray *tweets = [NSMutableArray arrayWithCapacity:tweetsInJson.count];
+                        for (NSDictionary *dictionary in tweetsInJson) {
+                            SSTweet *tweet = [[SSTweet alloc] initWithDictionary:dictionary];
+                            [tweets addObject:tweet];
+                        }
+                        
+                        // push timeline view controller
+                        SSTimelineViewController *tvc = [[SSTimelineViewController alloc] initWithArray:tweets];
+                        [self.nvc pushViewController:tvc animated:YES];
                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                         NSLog(@"Error: no timeline response");
                     }];
+                    
+
                 } failure:^(NSError *error) {
                     NSLog(@"Error: no access token");
                 }];
