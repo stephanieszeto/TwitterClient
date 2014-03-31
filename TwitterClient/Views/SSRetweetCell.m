@@ -8,6 +8,7 @@
 
 #import "SSRetweetCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "TwitterClient.h"
 #import "SSTweet.h"
 
 @interface SSRetweetCell ()
@@ -19,25 +20,31 @@
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UILabel *tweetText;
-@property (weak, nonatomic) IBOutlet UIImageView *replyButton;
-@property (weak, nonatomic) IBOutlet UIImageView *bottomRetweetButton;
-@property (weak, nonatomic) IBOutlet UIImageView *favoriteButton;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+@property (weak, nonatomic) IBOutlet UIButton *bottomRetweetButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (nonatomic, strong) TwitterClient *client;
+
+- (IBAction)onReplyButton:(id)sender;
+- (IBAction)onRetweetButton:(id)sender;
+- (IBAction)onFavoriteButton:(id)sender;
 
 @end
 
 @implementation SSRetweetCell
 
 - (void)setValues:(SSTweet *)tweet {
+    if (!self.client) {
+        self.client = [TwitterClient instance];
+    }
+    
     self.tweet = tweet;
     self.name.text = tweet.user.name;
     self.username.text = [NSString stringWithFormat:@"@%@", tweet.user.username];
-    self.retweeterLabel.text = [NSString stringWithFormat:@"%@ retweeted", tweet.retweeter.name];
+    self.retweeterLabel.text = [NSString stringWithFormat:@"%@ retweeted", tweet.retweeter.username];
     
     [self.avatar setImageWithURL:tweet.user.avatarURL];
     self.topRetweetButton.image = [UIImage imageNamed:@"defaultRetweet"];
-    self.replyButton.image = [UIImage imageNamed:@"defaultReply"];
-    self.bottomRetweetButton.image = [UIImage imageNamed:@"defaultRetweet"];
-    self.favoriteButton.image = [UIImage imageNamed:@"defaultFavorite"];
     
     self.tweetText.text = tweet.tweet;
     self.tweetText.numberOfLines = 0;
@@ -89,6 +96,34 @@
     } else {
     	return @"never";
     }
+}
+
+- (IBAction)onReplyButton:(id)sender {
+    self.replyButton.imageView.image = [UIImage imageNamed:@"hoverReply"];
+    [self.delegate callCompose];
+}
+
+- (IBAction)onRetweetButton:(id)sender {
+    self.bottomRetweetButton.imageView.image = [UIImage imageNamed:@"onRetweet"];
+    // make API call to retweet
+    NSLog(@"id: %@", self.tweet.id);
+    NSDictionary *parameter = @{@"tweetId" : self.tweet.id};
+    [self.client retweetWithSuccess:parameter success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Retweeted!");
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error.description);
+    }];
+}
+
+- (IBAction)onFavoriteButton:(id)sender {
+    self.favoriteButton.imageView.image = [UIImage imageNamed:@"onFavorite"];
+    // make API call to favorite
+    NSDictionary *parameter = @{@"tweetId" : self.tweet.id};
+    [self.client favoriteWithSuccess:parameter success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Favorited!");
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error.description);
+    }];
 }
 
 @end

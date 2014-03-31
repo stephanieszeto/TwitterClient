@@ -12,6 +12,8 @@
 @interface SSLoginViewController ()
 
 - (IBAction)onLoginButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *background;
+@property (weak, nonatomic) IBOutlet UIView *labelBox;
 
 @end
 
@@ -29,7 +31,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    // set up background color
+    self.background.backgroundColor = [UIColor colorWithRed:0.42 green:0.69 blue:0.95 alpha:1.0];
+    self.labelBox.layer.borderWidth = 1.0f;
+    self.labelBox.layer.borderColor = [[UIColor whiteColor] CGColor];
+    
+    // hide navigation bar
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

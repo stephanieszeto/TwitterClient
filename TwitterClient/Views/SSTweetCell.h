@@ -9,9 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "SSTweet.h"
 
+@class SSTweetCell;
+
+@protocol SSTweetCellDelegate <NSObject>
+
+- (void)callCompose;
+
+@end
+
 @interface SSTweetCell : UITableViewCell
 
 @property (nonatomic, strong) SSTweet *tweet;
+@property (nonatomic, weak) id <SSTweetCellDelegate> delegate;
 
 - (void)setValues:(SSTweet *)tweet;
 

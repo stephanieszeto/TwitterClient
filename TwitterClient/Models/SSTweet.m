@@ -28,6 +28,8 @@
         self.time = input[@"created_at"];
         self.numRetweets = [input[@"retweet_count"] integerValue];
         self.numFavorites = [input[@"favorite_count"] integerValue];
+        
+        self.id = input[@"id"];
         self.user = [[SSUser alloc] initWithDictionary:input[@"user"]];
         self.tweetDictionary = dictionary;
         

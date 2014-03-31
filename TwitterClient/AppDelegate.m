@@ -65,9 +65,21 @@
                     [client.requestSerializer saveAccessToken:accessToken];
                     NSLog(@"Step 3: received access token");
                     
-                    // make API calls
+                    // get current user
+                    [client userWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        //NSLog(@"user response: %@", responseObject);
+                        NSDictionary *userDictionary = @{@"name" : responseObject[@"name"], @"screen_name" : responseObject[@"screen_name"], @"profile_image_url" : responseObject[@"profile_image_url"]};
+                        
+                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                        [defaults setObject:userDictionary forKey:@"currentUser"];
+                        [defaults synchronize];
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        NSLog(@"Error: no user response");
+                    }];
+                    
+                    // get timeline
                     [client timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        //NSLog(@"timeline response: %@", responseObject);
+                        NSLog(@"timeline response: %@", responseObject);
                         
                         // populate models
                         NSArray *tweetsInJson = responseObject;
@@ -79,11 +91,10 @@
                         
                         // push timeline view controller
                         SSTimelineViewController *tvc = [[SSTimelineViewController alloc] initWithArray:tweets];
-                        [self.nvc pushViewController:tvc animated:YES];
+                        [self.nvc pushViewController:tvc animated:NO];
                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                         NSLog(@"Error: no timeline response");
                     }];
-                    
 
                 } failure:^(NSError *error) {
                     NSLog(@"Error: no access token");

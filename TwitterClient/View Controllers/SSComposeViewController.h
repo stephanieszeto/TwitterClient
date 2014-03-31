@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SSUser.h"
 
 @interface SSComposeViewController : UIViewController
+
+- (void)setValues;
 
 @end

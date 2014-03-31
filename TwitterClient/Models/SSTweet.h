@@ -18,6 +18,7 @@
 @property (nonatomic) BOOL isRetweet;
 @property (nonatomic, strong) SSUser *user;
 @property (nonatomic, strong) SSUser *retweeter;
+@property (nonatomic) NSNumber *id;
 @property (nonatomic, strong) NSDictionary *tweetDictionary;
 
 - (SSTweet *)initWithDictionary:(NSDictionary *)dictionary;

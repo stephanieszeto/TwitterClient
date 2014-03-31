@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SSRetweetCell.h"
+#import "SSTweetCell.h"
 
-@interface SSTimelineViewController : UIViewController < UITableViewDataSource,UITableViewDelegate >
+@interface SSTimelineViewController : UIViewController < UITableViewDataSource,UITableViewDelegate, SSRetweetCellDelegate, SSTweetCellDelegate >
 
 @property (nonatomic, strong) NSMutableArray *tweets;
 
