@@ -15,6 +15,9 @@
 @interface AppDelegate ()
 
 @property (nonatomic, strong) UINavigationController *nvc;
+@property (nonatomic, strong) SSTimelineViewController *tvc;
+@property (nonatomic, strong) SSLoginViewController *lvc;
+@property (nonatomic, strong) TwitterClient *client;
 
 @end
 
@@ -44,9 +47,19 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    SSLoginViewController *lvc = [[SSLoginViewController alloc] init];
-    self.nvc = [[UINavigationController alloc] initWithRootViewController:lvc];;
+    //SSLoginViewController *lvc = [[SSLoginViewController alloc] init];
+    //self.nvc = [[UINavigationController alloc] initWithRootViewController:lvc];;
+    //self.window.rootViewController = self.nvc;
+
+    self.lvc = [[SSLoginViewController alloc] init];
+    self.tvc = [[SSTimelineViewController alloc] init];
+    self.nvc = [[UINavigationController alloc] initWithRootViewController:self.lvc];
     self.window.rootViewController = self.nvc;
+    
+    self.client = [TwitterClient instance];
+    if ([self.client isAuthorized]) {
+        [self.nvc pushViewController:self.tvc animated:NO];
+    }
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -79,7 +92,8 @@
                     
                     // get timeline
                     [client timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        NSLog(@"timeline response: %@", responseObject);
+                        //NSLog(@"timeline response: %@", responseObject);
+                        NSLog(@"successful timeline!");
                         
                         // populate models
                         NSArray *tweetsInJson = responseObject;
@@ -88,6 +102,7 @@
                             SSTweet *tweet = [[SSTweet alloc] initWithDictionary:dictionary];
                             [tweets addObject:tweet];
                         }
+                        NSLog(@"populated tweets");
                         
                         // push timeline view controller
                         SSTimelineViewController *tvc = [[SSTimelineViewController alloc] initWithArray:tweets];
@@ -132,5 +147,38 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+/*# pragma mark - View controller methods
+
+- (void)updateRootViewController {
+    self.window.rootViewController = self.currentVC;
+}
+
+- (SSLoginViewController *)lvc {
+    if (!self.lvc) {
+        self.lvc = [[SSLoginViewController alloc] init];
+    }
+    return self.lvc;
+}
+
+- (UINavigationController *)tvc {
+    if (!self.tvc) {
+        SSTimelineViewController *tvc = [[SSTimelineViewController alloc] init];
+        self.tvc = [[UINavigationController alloc] initWithRootViewController:tvc];
+    }
+    return self.tvc;
+}
+
+- (UIViewController *)currentVC {
+    NSLog(@"assigning current VC");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"currentUser"]) {
+        NSLog(@"in here 2");
+        return self.tvc;
+    } else {
+        NSLog(@"in here 1");
+        return self.lvc;
+    }
+}*/
 
 @end

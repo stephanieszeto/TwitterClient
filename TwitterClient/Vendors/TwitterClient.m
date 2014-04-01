@@ -25,6 +25,17 @@
     return instance;
 }
 
+- (BOOL)isAuthorized {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"currentUser"]) {
+        NSLog(@"not authorized");
+        return NO;
+    } else {
+        NSLog(@"authorized");
+        return YES;
+    }
+}
+
 - (void)login {
     [self.requestSerializer removeAccessToken];
     [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"POST" callbackURL:[NSURL URLWithString:@"cptwitter://oauth"] scope:nil success:^(BDBOAuthToken *requestToken) {

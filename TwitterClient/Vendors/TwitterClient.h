@@ -14,6 +14,7 @@
 + (TwitterClient *)instance;
 
 - (void)login;
+- (BOOL)isAuthorized;
 
 - (AFHTTPRequestOperation *)timelineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 

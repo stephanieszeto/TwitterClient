@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 projects. All rights reserved.
 //
 
+extern NSString *const UserDidLoginNotification;
+extern NSString *const UserDidLogoutNotification;
+
 #import <Foundation/Foundation.h>
 
 @class SSTweet;

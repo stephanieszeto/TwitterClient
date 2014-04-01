@@ -28,7 +28,13 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        NSLog(@"creating tvc (restart case)");
+        self.client = [TwitterClient instance];
+        self.title = @"Home";
+        
+        // get timeline
+        [self loadTimeline];
+        NSLog(@"successful timeline! (restart case)");
     }
     return self;
 }
@@ -36,8 +42,10 @@
 - (SSTimelineViewController *)initWithArray:(NSMutableArray *)array {
     self = [super init];
     if (self) {
+        NSLog(@"creating tvc (log-in case)");
         self.title = @"Home";
         self.tweets = array;
+        self.client = [TwitterClient instance];
     }
     return self;
 }
@@ -45,7 +53,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.client = [TwitterClient instance];
     
     // assign table view's delegate, data source
     self.tableView.delegate = self;
@@ -78,6 +85,8 @@
     // register retweet cell
     UINib *retweetNib = [UINib nibWithNibName:@"SSRetweetCell" bundle:nil];
     [self.tableView registerNib:retweetNib forCellReuseIdentifier:@"SSRetweetCell"];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,6 +109,7 @@
 }
 
 - (void)loadTimeline {
+    NSLog(@"making timeline API call");
     [self.client timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         // populate models
         [self.tweets removeAllObjects];
@@ -112,6 +122,7 @@
         self.tweets = tweets;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: no timeline response");
+        NSLog(@"%@", error.description);
     }];
     [self.tableView reloadData];
 }

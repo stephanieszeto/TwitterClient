@@ -8,6 +8,9 @@
 
 #import "SSUser.h"
 
+NSString * const UserDidLoginNotification = @"UserDidLoginNotification";
+NSString * const UserDidLogoutNotification = @"UserDidLogoutNotification";
+
 @implementation SSUser
 
 - (SSUser *)initWithDictionary:(NSDictionary *)dictionary {

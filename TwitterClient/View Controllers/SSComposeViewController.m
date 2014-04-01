@@ -56,7 +56,7 @@
 }
 
 - (void)setValues {
-     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *userDictionary = [defaults objectForKey:@"currentUser"];
     SSUser *user = [[SSUser alloc] initWithDictionary:userDictionary];
     
