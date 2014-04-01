@@ -29,10 +29,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         NSLog(@"creating tvc (restart case)");
-        self.client = [TwitterClient instance];
         self.title = @"Home";
+        self.client = [TwitterClient instance];
         
-        // get timeline
+        // get tweets
+        NSLog(@"about to load timeline (restart case");
         [self loadTimeline];
         NSLog(@"successful timeline! (restart case)");
     }
@@ -44,14 +45,15 @@
     if (self) {
         NSLog(@"creating tvc (log-in case)");
         self.title = @"Home";
-        self.tweets = array;
         self.client = [TwitterClient instance];
+        self.tweets = array;
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
+    NSLog(@"in tvc/viewDidLoad");
     [super viewDidLoad];
     
     // assign table view's delegate, data source
