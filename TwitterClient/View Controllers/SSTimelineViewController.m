@@ -122,11 +122,11 @@
             [tweets addObject:tweet];
         }
         self.tweets = tweets;
+        [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: no timeline response");
         NSLog(@"%@", error.description);
     }];
-    [self.tableView reloadData];
 }
 
 # pragma mark - Navigation bar methods
